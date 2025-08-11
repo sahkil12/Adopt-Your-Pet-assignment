@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt Your Pet</title>
+
+    <!-- daisy ui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!--font awesome -->
+    <script src="https://kit.fontawesome.com/960946f225.js" crossorigin="anonymous"></script>
+
+    <style>
+        .all-font {
+            font-family: "Lato", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="all-font">
+
+    <header class="container mx-auto">
+        <!-- nav bar  -->
+        <nav class="mt-4 px-3 py-7 flex justify-between items-center ">
+
+            <div class="navbar bg-base-100 ">
+                <div class="navbar-start">
+                    <div class="dropdown">
+                        <div tabindex="0" role="button" class="btn btn-ghost md:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
+                        </div>
+                        <ul tabindex="0"
+                            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                            <li><a>Home</a></li>
+                            <li><a>Shop</a></li>
+                            <li><a>Contact</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="flex gap-2 items-center">
+                        <img class="w-6 h-6" src="images/logo.webp" alt="">
+                        <h2 class="text-3xl font-bold">Paddy</h2>
+                    </div>
+                </div>
+                <div class="navbar-center hidden md:flex">
+                    <ul class="gap-7 font-medium text-zinc-600 menu-horizontal px-1">
+                        <li><a class="cursor-pointer">Home</a></li>
+                        <li><a class="cursor-pointer">Shop</a></li>
+                        <li><a class="cursor-pointer">Contact</a></li>
+
+                    </ul>
+                </div>
+                <div class="navbar-end">
+                    <a class="btn rounded-full bg-slate-100 border-gray-500"><i
+                            class="fa-regular fa-circle-user"></i></a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- banner part -->
+        <div class="mt-6 flex flex-col hero-content text-center hero bg-base-200 mx-auto">
+
+
+            <div class="md:w-3/4 mx-auto space-y-3">
+                <h3 class="text-2xl font-bold text-zinc-600 mb-6">Bringing Families Together ❤️</h3>
+                <h1 class="text-5xl md:text-7xl/[90px] tracking-wide font-bold ">Your Path to Adoption Starts Here</h1>
+                <p class="py-6 text-base/7 md:w-3/4 mx-auto">
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a.
+                </p>
+                <button class="btn text-white bg-teal-800 rounded-lg px-6 py-5">View More</button>
+            </div>
+            <div>
+                <img src="images/pet.webp" alt="">
+            </div>
+
+        </div>
+
+    </header>
+
+    <main class="container">
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+
+</html>
