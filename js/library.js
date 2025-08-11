@@ -20,7 +20,7 @@ const displayCategoryBtn = (categories) => {
         const btnDiv = document.createElement("div");
         btnDiv.innerHTML = `
         
-        <button onclick ="loadCategoryCard('${category.category}')" class="btn py-6 md:px-18 md:py-10 font-bold md:text-xl gap-1 md:gap-3">
+        <button id="btn-${category.category}" onclick ="loadCategoryCard('${category.category}')" class="btn py-6 md:px-18 md:py-10 font-bold md:text-xl gap-1 md:gap-3 categories-btn">
 
         <img class ="w-5 md:w-10" src=${category.category_icon} alt="">
         ${category.category}
@@ -43,7 +43,10 @@ const loadAllPetCard = () => {
 
     fetch("https://openapi.programming-hero.com/api/peddy/pets")
         .then(res => res.json())
-        .then(data => displayPetCard(data.pets))
+        .then(data => {
+
+            displayPetCard(data.pets)
+        })
         .catch(err => console.log("ERROR", err))
 
 }
@@ -63,12 +66,12 @@ const displayPetCard = (allPets) => {
 
     const dynamicPetCard = document.getElementById("add-card");
 
-      dynamicPetCard.innerHTML ="";
+    dynamicPetCard.innerHTML = "";
 
-      if(allPets.length == 0){
+    if (allPets.length == 0) {
 
         dynamicPetCard.classList.remove("grid")
-        dynamicPetCard.innerHTML =`
+        dynamicPetCard.innerHTML = `
         
         <div class="h-[500px] items-center text-center space-y-7 flex flex-col justify-center">
 
@@ -79,15 +82,13 @@ const displayPetCard = (allPets) => {
 </div>
         
         `;
-      }
-      else{
+    }
+    else {
         dynamicPetCard.classList.add("grid")
-      }
-    
+    }
+
     allPets.forEach(pet => {
 
-      
-        console.log(pet);
         const petDiv = document.createElement("div");
         petDiv.classList = ("card bg-base-100  p-4 border border-gray-200");
         petDiv.innerHTML = `
@@ -154,14 +155,33 @@ const displayPetCard = (allPets) => {
 
 loadAllPetCard();
 
+const removeActiveBtnClass = () => {
+
+    const categoriesAllBtn =document.getElementsByClassName("categories-btn");
+
+    for(let categoryBtn of categoriesAllBtn){
+    categoryBtn.classList.remove("active-btn")
+    }
+}
+
 
 const loadCategoryCard = (categoryPetName) => {
 
-    console.log(categoryPetName);
-
     fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryPetName}`)
-    .then(res => res.json())
-    .then(data => displayPetCard(data.data))
-    .catch(err => console.log("ERROR", err))
+        .then(res => res.json())
+        .then(data => {
+            const activeBtn = document.getElementById(`btn-${categoryPetName}`);
+
+            // remove active btn class----
+            removeActiveBtnClass();
+
+            // add active btn class-
+
+            activeBtn.classList.add("active-btn");
+
+            displayPetCard(data.data)
+
+        })
+        .catch(err => console.log("ERROR", err))
 
 }

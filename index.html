@@ -22,6 +22,16 @@
         .all-font {
             font-family: "Lato", sans-serif;
         }
+
+        .active-btn {
+            background-color: rgba(14, 121, 129, 0.119);
+            border-radius: 60px;
+            border-color: #11c9d6ad;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 
@@ -80,7 +90,9 @@
                     It is a long established fact that a reader will be distracted by the readable content of a page
                     when looking at its layout. The point of using Lorem Ipsum is that it has a.
                 </p>
-                <button class="btn text-white bg-teal-800 rounded-lg px-6 py-5">View More</button>
+                <a href="#main-section" class="btn text-white bg-teal-800 rounded-lg px-6 py-5">
+                    View More
+                </a>
             </div>
             <div>
                 <img src="images/pet.webp" alt="">
@@ -90,7 +102,7 @@
 
     </header>
 
-    <main class="container mx-auto mt-9 md:mt-24 mb-10">
+    <main id="main-section" class="container mx-auto mt-9 md:mt-24 mb-10">
 
         <div class="items-center text-center mx-auto md:w-3/6 space-y-7">
             <h2 class="font-bold text-5xl">Adopt Your Best Friend</h2>
