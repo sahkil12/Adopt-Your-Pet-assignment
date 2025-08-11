@@ -90,13 +90,134 @@
 
     </header>
 
-    <main class="container">
+    <main class="container mx-auto mt-9 md:mt-24 mb-10">
+
+        <div class="items-center text-center mx-auto md:w-3/6 space-y-7">
+            <h2 class="font-bold text-5xl">Adopt Your Best Friend</h2>
+            <p class="text-zinc-500 font-medium">It is a long established fact that a reader will be distracted by the
+                readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.
+            </p>
+        </div>
+
+        <!-- dynamic button  -->
+        <div id="dynamic-btn" class="flex justify-between w-3/4 mx-auto mt-7 mb-6">
+
+        </div>
+
+        <div class="flex justify-between items-center mb-8">
+
+            <h2 class="p-1 text-2xl md:text-3xl font-bold">Best Deal For you</h2>
+            <button class=" btn rounded-lg bg-teal-700 font-semibold text-white text-base px-7 py-6">Sort by
+                Price</button>
+
+        </div>
+
+        <section>
+            <div class="div-container flex flex-col md:flex-row gap-5 mt-5">
+
+                <!-- right -->
+                <div id="add-card" class=" w-full flex-3 rounded-lg border ">
+
+                    <!-- card -->
+                    <!-- <div class="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2">
+
+                        <div class="card bg-base-100  p-4 border border-gray-200">
+                            <figure>
+                                <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                                    alt="Shoes" />
+                            </figure>
+                            <div class="card-body">
+                                <h2 class="card-title">Card Title</h2>
+                                <p>A card component has a figure, a body part, and inside body there are title and
+                                    actions
+                                    parts</p>
+                                <div class="card-actions justify-end">
+                                    <button class="btn btn-primary">Buy Now</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> -->
+
+                </div>
+                <!-- left -->
+                <div id="add-pic" class="border w-full flex-1 rounded-lg p-3">
+
+                </div>
+
+            </div>
+        </section>
 
     </main>
 
-    <footer>
+    <footer class="footer justify-around sm:footer-horizontal bg-neutral text-neutral-content p-5 md:px-12 md:py-16  ">
+        <nav>
+            <div class="flex gap-2 items-center mb-4">
+                <img class="w-6 h-6" src="images/logo.webp" alt="">
+                <h2 class="text-3xl font-bold">Paddy</h2>
+            </div>
 
+
+            <a class="">Location : av. Washington 165, NY CA </a>
+            <a class="">54003</a>
+            <a class="">Phone : +31 85 964 47 25</a>
+            <a class="">Email : info@yourdomain.com</a>
+            <a class="">Openings hours: 9.00 AM - 5.00 PM</a>
+
+            <nav>
+                <div class="grid grid-flow-col gap-4 mt-4">
+                    <a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            class="fill-current">
+                            <path
+                                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            class="fill-current">
+                            <path
+                                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            class="fill-current">
+                            <path
+                                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+            </nav>
+
+        </nav>
+        <nav>
+            <h4 class="font-bold text-lg text-white">Useful Links</h4>
+
+            <a class="cursor-pointer hover:text-gray-400">Home</a>
+            <a class="cursor-pointer hover:text-gray-400">Shop</a>
+            <a class="cursor-pointer hover:text-gray-400">About Us</a>
+            <a class="cursor-pointer hover:text-gray-400">Animals</a>
+            <a class="cursor-pointer hover:text-gray-400">Contact</a>
+
+        </nav>
+        <nav>
+            <h4 class="text-lg text-white font-bold">Drop a Message</h4>
+            <fieldset class="fieldset p-4">
+
+                <label class="label"></label>
+                <input type="email" class="px-12 rounded-md input bg-gray-900 text-gray-600 placeholder-gray-300"
+                    placeholder="Enter Your Email" />
+
+                <button
+                    class="btn px-7 bg-teal-700 mt-4 rounded-md text-white text-base border-none ">Subscribe</button>
+            </fieldset>
+        </nav>
     </footer>
+
 
 </body>
 
