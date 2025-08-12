@@ -24,13 +24,17 @@
         }
 
         .active-btn {
-            background-color: rgba(14, 121, 129, 0.119);
+            background-color: #10879024;
             border-radius: 60px;
             border-color: #11c9d6ad;
         }
 
         html {
             scroll-behavior: smooth;
+        }
+
+        .modal-action {
+            display: block;
         }
     </style>
 </head>
@@ -145,9 +149,10 @@
 
 
                 <!-- left -->
-                <div id="" class="border w-full flex-1 rounded-lg p-3">
+                <div id="" class="border border-gray-200 w-full flex-1 rounded-lg p-3">
 
-                    <div id="add-pic" class="grid grid-cols-2 gap-3 ">
+                    <div id="add-pic" class="grid grid-cols-2 gap-2 ">
+
 
 
                     </div>
@@ -162,19 +167,23 @@
         <!-- You can open the modal using ID.showModal() method -->
         <button id="show-btn" class="btn hidden" onclick="details-container.showModal()">open modal</button>
         <dialog id="details-container" class="modal">
-            <div class="modal-box w-11/12 max-w-5xl ">
-                <div id="input-details">
+            <div class="modal-box max-w-5xl ">
+                <div id="input-details" class="md:p-3">
+
+                    <!-- dynamic details -->
 
                 </div>
 
-                <div class="modal-action">
+                <div class="modal-action md:px-3">
                     <form method="dialog">
                         <!-- if there is a button, it will close the modal -->
-                        <button class="btn w-full">Close</button>
+                        <button class="btn w-full hover:bg-[#10879024] border-[#126b7184] py-6 font-bold text-lg">Close</button>
                     </form>
                 </div>
             </div>
         </dialog>
+
+        
 
     </main>
 
