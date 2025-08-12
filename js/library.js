@@ -1,4 +1,5 @@
 
+// load category btn dynamic data from api ----
 const loadCategoryBtn = () => {
 
     fetch("https://openapi.programming-hero.com/api/peddy/categories")
@@ -8,15 +9,13 @@ const loadCategoryBtn = () => {
 
 }
 
+//display the category btn in website with load category api data  
 const displayCategoryBtn = (categories) => {
-
-    // console.log(categories);
 
     const dynamicBtnContainer = document.getElementById("dynamic-btn");
 
     categories.forEach(category => {
 
-        // console.log(category)
         const btnDiv = document.createElement("div");
         btnDiv.innerHTML = `
         
@@ -36,7 +35,7 @@ const displayCategoryBtn = (categories) => {
 loadCategoryBtn();
 
 
-// load category pet card 
+// load category pet card data from api -------
 
 const loadAllPetCard = () => {
 
@@ -50,6 +49,7 @@ const loadAllPetCard = () => {
 
 }
 
+// if any data missing in card ant details missing then this function return show in display "Not Available"--
 const displayValue = (value) => {
 
     if (value === null || value === undefined || value === "" || value === "null" || value === "undefined") {
@@ -60,12 +60,11 @@ const displayValue = (value) => {
     }
 }
 
+// display all the pet card pet category card in website perfectly---
+
 const displayPetCard = (allPets) => {
 
-    // document.getElementById("spinner").classList.remove("hidden")
-
     const dynamicPetCard = document.getElementById("add-card");
-
 
     dynamicPetCard.innerHTML = "";
 
@@ -93,8 +92,7 @@ const displayPetCard = (allPets) => {
         const petDiv = document.createElement("div");
         petDiv.classList = ("card bg-base-100 p-4 border border-gray-200");
         petDiv.innerHTML = `
-
-        
+       
          <figure>
     
                 <img class="h-[180px] object-cover w-full rounded-md" src=${pet.image} alt="Shoes" />
@@ -133,23 +131,20 @@ const displayPetCard = (allPets) => {
                 <i class="fa-regular fa-thumbs-up"></i>
                 </a>
         </button>
-        <button class="btn px-7 rounded-lg text-teal-800 font-semibold border-teal-700 hover:bg-teal-700 hover:text-white"> Adopt </button>
+        <button onclick="displayAdoptedConfirm(this)" class="adopted-btn btn px-7 rounded-lg text-teal-800 font-semibold border-teal-700 hover:bg-teal-700 hover:text-white"> Adopt </button>
+
         <button onclick="loadPetDetails(${pet.petId})" class="btn px-7 rounded-lg text-teal-800 font-semibold border-teal-700 hover:bg-teal-700 hover:text-white"> Details </button>
 
-
-    </div>
-             
+    </div>            
              </div>
               
               <div>
-      
-                
+                  
                 </div>
                 
         `
 
         dynamicPetCard.append(petDiv)
-
 
     })
 
@@ -166,10 +161,10 @@ const removeActiveBtnClass = () => {
     }
 }
 
+// load category based on pet name with api and spinner added--
 const loadCategoryCard = (categoryPetName) => {
     document.getElementById("spinner").classList.remove("hidden")
     document.getElementById("add-card").classList.add("hidden")
-
 
     fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryPetName}`)
         .then(res => res.json())
@@ -191,7 +186,7 @@ const loadCategoryCard = (categoryPetName) => {
                 document.getElementById("spinner").classList.add("hidden");
                 document.getElementById("add-card").classList.remove("hidden")
 
-            }, 2000)
+            }, 1500)
 
         })
         .catch(err => console.log("ERROR", err))
@@ -202,19 +197,13 @@ const loadPetDetails = (id) => {
 
     fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`)
         .then(res => res.json())
-        .then((data) => {
-
-            //send data to add photo card --
-
-            // details card 
-            displayPetDetails(data.petData)
-
-        })
+        .then((data) => displayPetDetails(data.petData))
 }
+
+// display the pet details section ---
 
 const displayPetDetails = (details) => {
 
-    console.log(details.breed)
     const modalContent = document.getElementById("input-details");
     modalContent.innerHTML = `
     
@@ -254,14 +243,12 @@ const displayPetDetails = (details) => {
                             </div>
 
                             <div class="divider w-[90%] mx-auto"></div>
-
                            
                              <div>
                                 <h2 class="font-bold text-xl">Details Information</h2>
                                 <p class="text-sm/7">'${details.pet_details}'</p>
                                 
                              </div>
-
 
                         </div>
 
@@ -270,10 +257,9 @@ const displayPetDetails = (details) => {
     `
     document.getElementById("details-container").showModal();
 
-
 }
-// sort function --
 
+// sort function --
 document.getElementById("sort-btn").addEventListener("click", () => {
 
     fetch("https://openapi.programming-hero.com/api/peddy/pets")
@@ -283,23 +269,48 @@ document.getElementById("sort-btn").addEventListener("click", () => {
                 return b.price - a.price;
             });
             displayPetCard(data.pets)
-
         }
         )
 })
 
-
+// add img section function ----
 const addPetPic = (imgUrl) => {
-   const addPicContainer = document.getElementById("add-pic");
+    const addPicContainer = document.getElementById("add-pic");
 
     const div = document.createElement("div");
     div.innerHTML = `
     
     <img class="object-cover rounded-md" src ="${imgUrl}" />
-
-    
+ 
     `
-    
     addPicContainer.append(div);
+
+}
+
+const displayAdoptedConfirm = (btn) => {
+
+    btn.innerText = "Adopted"
+    btn.disabled = true;
+    btn.classList.add("opacity-40", "cursor-not-allowed");
+
+    let second = 3;
+    const countdown = document.getElementById("countdownTimer");
+
+    countdown.style.setProperty('--value', second);
+    countdown.innerText = second;
+
+    document.getElementById("adoptedModal").showModal()
+
+    const timer = setInterval(() => {
+        second--;
+        countdown.style.setProperty('--value', second);
+        countdown.innerText = second;
+
+        if (second === -1 ) {
+            clearInterval(timer);
+            document.getElementById("adoptedModal").close()
+        }
+
+    }, 1000)
 
 }
