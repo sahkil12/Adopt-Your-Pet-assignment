@@ -119,7 +119,8 @@
         <div class="flex justify-between items-center mb-12 mt-4">
 
             <h2 class="p-1 text-2xl md:text-3xl font-bold">Best Deal For you</h2>
-            <button class=" btn rounded-lg bg-teal-700 font-semibold text-white text-base px-7 py-6">Sort by
+            <button id="sort-btn" class=" btn rounded-lg bg-teal-700 font-semibold text-white text-base px-7 py-6">Sort
+                by
                 Price</button>
 
         </div>
@@ -129,9 +130,12 @@
 
                 <!-- right -->
                 <div class=" w-full flex-3 rounded-lg ">
+                    <!-- spinner -->
+                    <div id="spinner" class="hidden text-center mb-40 mt-40">
+                        <span class="loading loading-spinner text-accent w-20 text-teal-700"></span>
+                    </div>
 
                     <div id="add-card" class="flex-3  grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2">
-
 
 
                     </div>
@@ -154,6 +158,23 @@
 
             </div>
         </section>
+
+        <!-- You can open the modal using ID.showModal() method -->
+        <button id="show-btn" class="btn hidden" onclick="details-container.showModal()">open modal</button>
+        <dialog id="details-container" class="modal">
+            <div class="modal-box w-11/12 max-w-5xl ">
+                <div id="input-details">
+
+                </div>
+
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button, it will close the modal -->
+                        <button class="btn w-full">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
 
     </main>
 

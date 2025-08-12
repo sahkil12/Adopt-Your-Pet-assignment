@@ -20,7 +20,7 @@ const displayCategoryBtn = (categories) => {
         const btnDiv = document.createElement("div");
         btnDiv.innerHTML = `
         
-        <button id="btn-${category.category}" onclick ="loadCategoryCard('${category.category}')" class="btn py-6 md:px-18 md:py-10 font-bold md:text-xl gap-1 md:gap-3 categories-btn">
+        <button id="btn-${category.category}" onclick ="loadCategoryCard('${category.category}')" class="btn py-6 md:px-18 md:py-10 font-bold md:text-xl gap-1 md:gap-3 categories-btn rounded-[60px]">
 
         <img class ="w-5 md:w-10" src=${category.category_icon} alt="">
         ${category.category}
@@ -64,7 +64,10 @@ const displayValue = (value) => {
 
 const displayPetCard = (allPets) => {
 
+    // document.getElementById("spinner").classList.remove("hidden")
+
     const dynamicPetCard = document.getElementById("add-card");
+
 
     dynamicPetCard.innerHTML = "";
 
@@ -92,6 +95,7 @@ const displayPetCard = (allPets) => {
         const petDiv = document.createElement("div");
         petDiv.classList = ("card bg-base-100  p-4 border border-gray-200");
         petDiv.innerHTML = `
+
         
          <figure>
     
@@ -132,7 +136,7 @@ const displayPetCard = (allPets) => {
                 </a>
         </button>
         <button class="btn px-7 rounded-lg text-teal-800 font-semibold border-teal-700"> Adopt </button>
-        <button class="btn px-7 rounded-lg text-teal-800 font-semibold border-teal-700"> Details </button>
+        <button onclick="loadPetDetails(${pet.petId})" class="btn px-7 rounded-lg text-teal-800 font-semibold border-teal-700"> Details </button>
 
 
     </div>
@@ -143,7 +147,7 @@ const displayPetCard = (allPets) => {
       
                 
                 </div>
-
+                
         `
 
         dynamicPetCard.append(petDiv)
@@ -157,15 +161,18 @@ loadAllPetCard();
 
 const removeActiveBtnClass = () => {
 
-    const categoriesAllBtn =document.getElementsByClassName("categories-btn");
+    const categoriesAllBtn = document.getElementsByClassName("categories-btn");
 
-    for(let categoryBtn of categoriesAllBtn){
-    categoryBtn.classList.remove("active-btn")
+    for (let categoryBtn of categoriesAllBtn) {
+        categoryBtn.classList.remove("active-btn")
     }
 }
 
 
 const loadCategoryCard = (categoryPetName) => {
+    document.getElementById("spinner").classList.remove("hidden")
+    document.getElementById("add-card").classList.add("hidden")
+
 
     fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryPetName}`)
         .then(res => res.json())
@@ -180,8 +187,52 @@ const loadCategoryCard = (categoryPetName) => {
             activeBtn.classList.add("active-btn");
 
             displayPetCard(data.data)
+            
+            // spinner time set 2s--
+            setTimeout(() => {
+
+                document.getElementById("spinner").classList.add("hidden");
+                document.getElementById("add-card").classList.remove("hidden")
+
+            }, 2000)
 
         })
         .catch(err => console.log("ERROR", err))
 
 }
+
+const loadPetDetails = (id) => {
+
+    fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`)
+        .then(res => res.json())
+        .then((data) => displayPetDetails(data.petData))
+}
+
+const displayPetDetails = (details) => {
+
+    console.log(details.breed)
+    const modalContent = document.getElementById("input-details");
+    modalContent.innerHTML = `
+    
+    <img class ="w-full object-cover h-[450px]" src =${details.image} />
+
+    `
+    document.getElementById("details-container").showModal();
+
+
+}
+// sort function --
+
+document.getElementById("sort-btn").addEventListener("click", () => {
+
+    fetch("https://openapi.programming-hero.com/api/peddy/pets")
+        .then(res => res.json())
+        .then(data => {
+            data.pets.sort((a, b) => {
+                return b.price - a.price;
+            });
+            displayPetCard(data.pets)
+
+        }
+        )
+})
